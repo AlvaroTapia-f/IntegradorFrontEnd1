@@ -16,10 +16,6 @@ export const handleGetProductsInLocalStorage = ()=>{
 export const setInLocalStorage = (productIn) =>{
     //Traer todos los elementos
     let productsInLocal = handleGetProductsInLocalStorage();
-    console.log(productIn);
-    console.log("Id producto enviado" + productIn.id);
-    console.log(productsInLocal[0].id);
-    
     
     const existsIndex = productsInLocal.findIndex((productLocal) =>{
         console.log(productLocal.id);
