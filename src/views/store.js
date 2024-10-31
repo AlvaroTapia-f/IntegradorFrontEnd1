@@ -2,22 +2,26 @@
 
 
 import { setActiveProduct } from "../../main";
-import { handleGetProductsInLocalStorage } from "../persistence/localStorage";
+import { handleGetProductsInLocalStorage, setInLocalStorage } from "../persistence/localStorage";
 import { openModal } from "./modal";
 
 //Funcion que trae los elementos y llama al render
 export function handleGetProductsToStore (){
     const products =  handleGetProductsInLocalStorage();
-    handleRenderList(products);
+    if(products){
+        handleRenderList(products);
+    } else{
+        setInLocalStorage();
+    }
 };
 
 //Filtra y renderiza la seccion con sus respectivos elementos
 export function handleRenderList (productsIn){
 
     //Filtra arrays por categoría
-    const burgers = productsIn.filter((el) => el.categoria == "Hamburguesa");
+    const burgers = productsIn.filter((el) => el.categoria === "Hamburguesa");
     const papas = productsIn.filter((el) => el.categoria === "Papas");
-    const gaseosas = productsIn.filter((el) => el.categoria == "Gaseosa");
+    const gaseosas = productsIn.filter((el) => el.categoria === "Gaseosa");
     console.log(burgers);
     
     
@@ -50,7 +54,7 @@ export function handleRenderList (productsIn){
             ${productosHtml.join("")}
             </div>
             </section>
-            `
+            `;
         } else{
             return "";
         }

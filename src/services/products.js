@@ -28,7 +28,7 @@ export const handleSaveOrModifyProducts = () =>{
         }
     }else{
         product = {
-            id: new Date().toISOString(),
+            id: new Date(),
             nombre,
             imagen,
             precio,
@@ -37,16 +37,14 @@ export const handleSaveOrModifyProducts = () =>{
     }
 
     setInLocalStorage(product);
+    handleGetProductsToStore();
+    closeModal();
 
     Swal.fire({
         title: "Excelente!",
         text: "Producto guardado correctamente!",
         icon: "success"
       });
-    
-    handleGetProductsToStore();
-    
-    closeModal();
     
 }
 

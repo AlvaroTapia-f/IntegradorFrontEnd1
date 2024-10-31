@@ -7,6 +7,7 @@ import { handleDeleteProduct, handleSaveOrModifyProducts } from "../services/pro
 const modal = document.querySelector("#modalPopUp");
 export const openModal = () =>{
     modal.classList.add('mostrarPopUp');
+    
     const btnDelete = document.querySelector("#btnDelete");
 
     if(activeProduct){
